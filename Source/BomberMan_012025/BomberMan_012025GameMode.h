@@ -28,8 +28,8 @@ public:
 	FTransform LugarAparicion;
 	bool bAleatorio;
 	int32 cont_b_ale=0;
-
-	bool setAleatorio = false;
+	TArray<ABloque*> aBloques;
+	
 
 
 

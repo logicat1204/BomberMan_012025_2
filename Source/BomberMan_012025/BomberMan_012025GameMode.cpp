@@ -32,6 +32,8 @@ void ABomberMan_012025GameMode::Tick(float DeltaTime)
 
 void ABomberMan_012025GameMode::GenerarNivel(FVector locacionGenerar, TArray<TArray<int32>> ArregloNivel)
 {
+	ABloque* BloqueGenerado = nullptr;
+	bool setAleatorio = false;
 	int32 limite_ale = FMath::RandRange(2, 6);
 	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, FString::Printf(TEXT("Numero de bloques aleatorios con comportamiento: %d"), limite_ale));
 	LugarAparicion.SetLocation(locacionGenerar);
@@ -55,50 +57,55 @@ void ABomberMan_012025GameMode::GenerarNivel(FVector locacionGenerar, TArray<TAr
 				if (setAleatorio == true && cont_b_ale<=limite_ale)
 				{
 				LugarAparicion.SetLocation(FVector(locacionGenerar.X + (100.0f * j), locacionGenerar.Y + (100.0f * k), 0.0));
-				GetWorld()->SpawnActor<ABloqueMadera>(ABloqueMaderaFuncional::StaticClass(), LugarAparicion);
+				BloqueGenerado=GetWorld()->SpawnActor<ABloqueMadera>(ABloqueMaderaFuncional::StaticClass(), LugarAparicion);
 				}
 				else
 				{ 
 				LugarAparicion.SetLocation(FVector(locacionGenerar.X + (100.0f * j), locacionGenerar.Y + (100.0f * k), 0.0));
-				GetWorld()->SpawnActor<ABloqueMadera>(ABloqueMadera::StaticClass(), LugarAparicion);
+				BloqueGenerado=GetWorld()->SpawnActor<ABloqueMadera>(ABloqueMadera::StaticClass(), LugarAparicion);
 				}
 				break;
 			case 2:
 				if (setAleatorio == true && cont_b_ale <= limite_ale)
 				{
 					LugarAparicion.SetLocation(FVector(locacionGenerar.X + (100.0f * j), locacionGenerar.Y + (100.0f * k), 0.0));
-					GetWorld()->SpawnActor<ABloqueLadrillo2>(AMyBloqueLadrillo2Funcional::StaticClass(), LugarAparicion);
+					BloqueGenerado=GetWorld()->SpawnActor<ABloqueLadrillo2>(AMyBloqueLadrillo2Funcional::StaticClass(), LugarAparicion);
 				}
 				else
 				{
 					LugarAparicion.SetLocation(FVector(locacionGenerar.X + (100.0f * j), locacionGenerar.Y + (100.0f * k), 0.0));
-					GetWorld()->SpawnActor<ABloqueLadrillo2>(ABloqueLadrillo2::StaticClass(), LugarAparicion);
+					BloqueGenerado=GetWorld()->SpawnActor<ABloqueLadrillo2>(ABloqueLadrillo2::StaticClass(), LugarAparicion);
 				}
 				break;
 			case 3:
 				if (setAleatorio == true && cont_b_ale <= limite_ale)
 				{
 					LugarAparicion.SetLocation(FVector(locacionGenerar.X + (100.0f * j), locacionGenerar.Y + (100.0f * k), 0.0));
-					GetWorld()->SpawnActor<ABloqueConcreto2>(AMyBloqueConcreto2Funcional::StaticClass(), LugarAparicion);
+					BloqueGenerado=GetWorld()->SpawnActor<ABloqueConcreto2>(AMyBloqueConcreto2Funcional::StaticClass(), LugarAparicion);
 				}
 				else
 				{
 					LugarAparicion.SetLocation(FVector(locacionGenerar.X + (100.0f * j), locacionGenerar.Y + (100.0f * k), 0.0));
-					GetWorld()->SpawnActor<ABloqueConcreto2>(ABloqueConcreto2::StaticClass(), LugarAparicion);
+					BloqueGenerado=GetWorld()->SpawnActor<ABloqueConcreto2>(ABloqueConcreto2::StaticClass(), LugarAparicion);
 				}
 				break;
 			case 4:
 				if (setAleatorio == true && cont_b_ale <= limite_ale)
 				{
 					LugarAparicion.SetLocation(FVector(locacionGenerar.X + (100.0f * j), locacionGenerar.Y + (100.0f * k), 0.0));
-					GetWorld()->SpawnActor<ABloqueAcero2>(AMyBloqueAcero2Funcional::StaticClass(), LugarAparicion);
+					BloqueGenerado=GetWorld()->SpawnActor<ABloqueAcero2>(AMyBloqueAcero2Funcional::StaticClass(), LugarAparicion);
 				}
 				else
 				{
 					LugarAparicion.SetLocation(FVector(locacionGenerar.X + (100.0f * j), locacionGenerar.Y + (100.0f * k), 0.0));
-					GetWorld()->SpawnActor<ABloqueAcero2>(ABloqueAcero2::StaticClass(), LugarAparicion);
+					BloqueGenerado=GetWorld()->SpawnActor<ABloqueAcero2>(ABloqueAcero2::StaticClass(), LugarAparicion);
 				}
 				break;
+			}
+			// Agregar el bloque al TArray si fue generado
+			if (BloqueGenerado)
+			{
+				aBloques.Add(BloqueGenerado);
 			}
 			setAleatorio = false;
 		}

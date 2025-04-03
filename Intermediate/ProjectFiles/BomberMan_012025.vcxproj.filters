@@ -83,6 +83,9 @@
     <ClCompile Include="..\..\Source\BomberMan_012025\Private\BombBot.cpp">
       <Filter>Source\BomberMan_012025\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Private\Enemigo.cpp">
+      <Filter>Source\BomberMan_012025\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\BomberMan_012025\Private\MyBloqueAcero2Funcional.cpp">
       <Filter>Source\BomberMan_012025\Private</Filter>
     </ClCompile>
@@ -117,6 +120,9 @@
       <Filter>Source\BomberMan_012025\Public</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\BomberMan_012025\Public\BombBot.h">
+      <Filter>Source\BomberMan_012025\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Public\Enemigo.h">
       <Filter>Source\BomberMan_012025\Public</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\BomberMan_012025\Public\MyBloqueAcero2Funcional.h">
