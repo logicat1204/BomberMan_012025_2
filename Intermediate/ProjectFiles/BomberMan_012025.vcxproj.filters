@@ -11,6 +11,8 @@
     <None Include="..\..\Source\BomberMan_012025Editor.Target.cs">
       <Filter>Source</Filter>
     </None>
+    <None Include="..\..\.gitattributes" />
+    <None Include="..\..\.gitignore" />
     <None Include="..\..\.vsconfig" />
     <Filter Include="Config">
       <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
@@ -72,13 +74,22 @@
     <ClCompile Include="..\..\Source\BomberMan_012025\Private\BloqueMadera.cpp">
       <Filter>Source\BomberMan_012025\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Private\BloqueMaderaFuncional.cpp">
+      <Filter>Source\BomberMan_012025\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\BomberMan_012025\Private\Bomba.cpp">
       <Filter>Source\BomberMan_012025\Private</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\BomberMan_012025\Private\BombBot.cpp">
       <Filter>Source\BomberMan_012025\Private</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\BomberMan_012025\Private\Enemigo.cpp">
+    <ClCompile Include="..\..\Source\BomberMan_012025\Private\MyBloqueAcero2Funcional.cpp">
+      <Filter>Source\BomberMan_012025\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Private\MyBloqueConcreto2Funcional.cpp">
+      <Filter>Source\BomberMan_012025\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Private\MyBloqueLadrillo2Funcional.cpp">
       <Filter>Source\BomberMan_012025\Private</Filter>
     </ClCompile>
     <Filter Include="Source\BomberMan_012025\Public">
@@ -99,13 +110,22 @@
     <ClCompile Include="..\..\Source\BomberMan_012025\Public\BloqueMadera.h">
       <Filter>Source\BomberMan_012025\Public</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Public\BloqueMaderaFuncional.h">
+      <Filter>Source\BomberMan_012025\Public</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\BomberMan_012025\Public\Bomba.h">
       <Filter>Source\BomberMan_012025\Public</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\BomberMan_012025\Public\BombBot.h">
       <Filter>Source\BomberMan_012025\Public</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\BomberMan_012025\Public\Enemigo.h">
+    <ClCompile Include="..\..\Source\BomberMan_012025\Public\MyBloqueAcero2Funcional.h">
+      <Filter>Source\BomberMan_012025\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Public\MyBloqueConcreto2Funcional.h">
+      <Filter>Source\BomberMan_012025\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Public\MyBloqueLadrillo2Funcional.h">
       <Filter>Source\BomberMan_012025\Public</Filter>
     </ClCompile>
   </ItemGroup>

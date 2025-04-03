@@ -3,6 +3,10 @@
 #pragma once
 
 
+#include "MyBloqueAcero2Funcional.h"
+#include "MyBloqueConcreto2Funcional.h"
+#include "MyBloqueLadrillo2Funcional.h"
+#include "BloqueMaderaFuncional.h"
 #include "BloqueAcero2.h"
 #include "BloqueConcreto2.h"
 #include "BloqueLadrillo2.h"
@@ -22,10 +26,10 @@ public:
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaTime) override;
 	FTransform LugarAparicion;
+	bool bAleatorio;
+	int32 cont_b_ale=0;
 
-
-
-
+	bool setAleatorio = false;
 
 
 
