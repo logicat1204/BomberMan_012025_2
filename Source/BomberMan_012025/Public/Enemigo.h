@@ -15,6 +15,8 @@ public:
 	// Sets default values for this character's properties
 	AEnemigo();
 
+	USkeletalMeshComponent* MallaEnemigo;
+	UStaticMeshComponent* MallaAltEnemigo;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -26,4 +28,11 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+
+	void MoverAdelante(float value);
+	void MoverDetras(float value);
+	void MoverDerecha(float value);
+	void MoverIzquierda(float value);
+	void Volar();
+	int32 vuelo;
 };

@@ -86,6 +86,18 @@
     <ClCompile Include="..\..\Source\BomberMan_012025\Private\Enemigo.cpp">
       <Filter>Source\BomberMan_012025\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Private\EnemigoAcuatico.cpp">
+      <Filter>Source\BomberMan_012025\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Private\EnemigoAereo.cpp">
+      <Filter>Source\BomberMan_012025\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Private\EnemigoSubterraneo.cpp">
+      <Filter>Source\BomberMan_012025\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Private\EnemigoTerrestre.cpp">
+      <Filter>Source\BomberMan_012025\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\BomberMan_012025\Private\MyBloqueAcero2Funcional.cpp">
       <Filter>Source\BomberMan_012025\Private</Filter>
     </ClCompile>
@@ -123,6 +135,18 @@
       <Filter>Source\BomberMan_012025\Public</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\BomberMan_012025\Public\Enemigo.h">
+      <Filter>Source\BomberMan_012025\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Public\EnemigoAcuatico.h">
+      <Filter>Source\BomberMan_012025\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Public\EnemigoAereo.h">
+      <Filter>Source\BomberMan_012025\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Public\EnemigoSubterraneo.h">
+      <Filter>Source\BomberMan_012025\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Public\EnemigoTerrestre.h">
       <Filter>Source\BomberMan_012025\Public</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\BomberMan_012025\Public\MyBloqueAcero2Funcional.h">
