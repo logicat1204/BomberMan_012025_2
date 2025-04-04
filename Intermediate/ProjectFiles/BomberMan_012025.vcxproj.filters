@@ -65,6 +65,24 @@
     <ClCompile Include="..\..\Source\BomberMan_012025\Private\BloqueAcero2.cpp">
       <Filter>Source\BomberMan_012025\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Private\BloqueAgua.cpp">
+      <Filter>Source\BomberMan_012025\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Private\BloqueAguaFuncional.cpp">
+      <Filter>Source\BomberMan_012025\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Private\BloqueArena.cpp">
+      <Filter>Source\BomberMan_012025\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Private\BloqueArenaFuncional.cpp">
+      <Filter>Source\BomberMan_012025\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Private\BloqueCesped.cpp">
+      <Filter>Source\BomberMan_012025\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Private\BloqueCespedFuncional.cpp">
+      <Filter>Source\BomberMan_012025\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\BomberMan_012025\Private\BloqueConcreto2.cpp">
       <Filter>Source\BomberMan_012025\Private</Filter>
     </ClCompile>
@@ -75,6 +93,24 @@
       <Filter>Source\BomberMan_012025\Private</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\BomberMan_012025\Private\BloqueMaderaFuncional.cpp">
+      <Filter>Source\BomberMan_012025\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Private\BloqueOro.cpp">
+      <Filter>Source\BomberMan_012025\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Private\BloqueOroFuncional.cpp">
+      <Filter>Source\BomberMan_012025\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Private\BloqueRoca.cpp">
+      <Filter>Source\BomberMan_012025\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Private\BloqueRocaFuncional.cpp">
+      <Filter>Source\BomberMan_012025\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Private\BloqueVidrio.cpp">
+      <Filter>Source\BomberMan_012025\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Private\BloqueVidrioFuncional.cpp">
       <Filter>Source\BomberMan_012025\Private</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\BomberMan_012025\Private\Bomba.cpp">
@@ -116,6 +152,24 @@
     <ClCompile Include="..\..\Source\BomberMan_012025\Public\BloqueAcero2.h">
       <Filter>Source\BomberMan_012025\Public</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Public\BloqueAgua.h">
+      <Filter>Source\BomberMan_012025\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Public\BloqueAguaFuncional.h">
+      <Filter>Source\BomberMan_012025\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Public\BloqueArena.h">
+      <Filter>Source\BomberMan_012025\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Public\BloqueArenaFuncional.h">
+      <Filter>Source\BomberMan_012025\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Public\BloqueCesped.h">
+      <Filter>Source\BomberMan_012025\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Public\BloqueCespedFuncional.h">
+      <Filter>Source\BomberMan_012025\Public</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\BomberMan_012025\Public\BloqueConcreto2.h">
       <Filter>Source\BomberMan_012025\Public</Filter>
     </ClCompile>
@@ -126,6 +180,24 @@
       <Filter>Source\BomberMan_012025\Public</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\BomberMan_012025\Public\BloqueMaderaFuncional.h">
+      <Filter>Source\BomberMan_012025\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Public\BloqueOro.h">
+      <Filter>Source\BomberMan_012025\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Public\BloqueOroFuncional.h">
+      <Filter>Source\BomberMan_012025\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Public\BloqueRoca.h">
+      <Filter>Source\BomberMan_012025\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Public\BloqueRocaFuncional.h">
+      <Filter>Source\BomberMan_012025\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Public\BloqueVidrio.h">
+      <Filter>Source\BomberMan_012025\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Public\BloqueVidrioFuncional.h">
       <Filter>Source\BomberMan_012025\Public</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\BomberMan_012025\Public\Bomba.h">
