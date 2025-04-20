@@ -7,7 +7,7 @@
 #include "BloqueMadera.generated.h"
 
 /**
- * 
+ *
  */
 UCLASS()
 class BOMBERMAN_012025_API ABloqueMadera : public ABloque
@@ -19,13 +19,13 @@ public:
 	void destruirse();
 	void BeginPlay();
 	void Tick(float DeltaTime);
-	float mov_adelante=100.0f;
+	float mov_adelante = 100.0f;
 	FVector posicion_anterior;
 	FTimerHandle ControladorTiempo;
 	int32 contadorTicks;
 
 	FTimerHandle Destruccion;
-	int32 contadorDestruir=0;
+	int32 contadorDestruir = 0;
 	ABloqueMadera();
 
 

@@ -21,7 +21,7 @@ void ABloqueOroFuncional::BeginPlay()
 		TiempoRotar,
 		this,
 		&ABloqueOroFuncional::rotar_bloque,
-		3.0f,
+		0.5f,
 		true
 	);
 

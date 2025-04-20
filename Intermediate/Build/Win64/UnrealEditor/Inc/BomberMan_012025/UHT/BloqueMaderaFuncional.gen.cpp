@@ -30,7 +30,7 @@ struct Z_Construct_UClass_ABloqueMaderaFuncional_Statics
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
 #if !UE_BUILD_SHIPPING
-		{ "Comment", "/**\n * \n */" },
+		{ "Comment", "/**\n *\n */" },
 #endif
 		{ "IncludePath", "BloqueMaderaFuncional.h" },
 		{ "ModuleRelativePath", "Public/BloqueMaderaFuncional.h" },
@@ -83,10 +83,10 @@ ABloqueMaderaFuncional::~ABloqueMaderaFuncional() {}
 struct Z_CompiledInDeferFile_FID_Users_HP_VICTUS_CORE_i5_Documents_Unreal_Projects_BomberMan_012025_Source_BomberMan_012025_Public_BloqueMaderaFuncional_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ABloqueMaderaFuncional, ABloqueMaderaFuncional::StaticClass, TEXT("ABloqueMaderaFuncional"), &Z_Registration_Info_UClass_ABloqueMaderaFuncional, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABloqueMaderaFuncional), 2109157918U) },
+		{ Z_Construct_UClass_ABloqueMaderaFuncional, ABloqueMaderaFuncional::StaticClass, TEXT("ABloqueMaderaFuncional"), &Z_Registration_Info_UClass_ABloqueMaderaFuncional, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABloqueMaderaFuncional), 1322914939U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_HP_VICTUS_CORE_i5_Documents_Unreal_Projects_BomberMan_012025_Source_BomberMan_012025_Public_BloqueMaderaFuncional_h_3599726465(TEXT("/Script/BomberMan_012025"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_HP_VICTUS_CORE_i5_Documents_Unreal_Projects_BomberMan_012025_Source_BomberMan_012025_Public_BloqueMaderaFuncional_h_3195101975(TEXT("/Script/BomberMan_012025"),
 	Z_CompiledInDeferFile_FID_Users_HP_VICTUS_CORE_i5_Documents_Unreal_Projects_BomberMan_012025_Source_BomberMan_012025_Public_BloqueMaderaFuncional_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_HP_VICTUS_CORE_i5_Documents_Unreal_Projects_BomberMan_012025_Source_BomberMan_012025_Public_BloqueMaderaFuncional_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

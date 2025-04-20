@@ -1,5 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 
 #include "BloqueMadera.h"
 #include "Components/BoxComponent.h"
@@ -7,7 +5,7 @@
 
 
 
-ABloqueMadera::ABloqueMadera(){
+ABloqueMadera::ABloqueMadera() {
 
 	static ConstructorHelpers::FObjectFinder<UMaterial>AssetMadera(TEXT("/Script/Engine.Material'/Game/StarterContent/Materials/M_Wood_Oak.M_Wood_Oak'"));
 	if (AssetMadera.Succeeded()) {
@@ -58,18 +56,17 @@ void ABloqueMadera::BeginPlay() {
 	/*
 	posicion_anterior = GetActorLocation();
 	GetWorldTimerManager().SetTimer(
-		ControladorTiempo, 
-		this, 
-		&ABloqueMadera::mover_bloque, 
-		3.0f, 
+		ControladorTiempo,
+		this,
+		&ABloqueMadera::mover_bloque,
+		3.0f,
 		true);
 		*/
 }
 
 
 void ABloqueMadera::Tick(float DeltaTime) {
-	
+
 
 	Super::Tick(DeltaTime);
 }
-

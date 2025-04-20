@@ -6,7 +6,7 @@
 // Sets default values
 AEnemigo::AEnemigo()
 {
- 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 
@@ -27,7 +27,7 @@ AEnemigo::AEnemigo()
 void AEnemigo::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 }
 
 // Called every frame
@@ -61,8 +61,8 @@ FUNCIONES PARA MOVER AL CARACTER EN UN CICLO TICK
 */
 void AEnemigo::MoverAdelante(float value)
 {
-	FVector Ubi=GetActorLocation();
-	SetActorLocation(FVector(Ubi.X,Ubi.Y+value,Ubi.Z));
+	FVector Ubi = GetActorLocation();
+	SetActorLocation(FVector(Ubi.X, Ubi.Y + value, Ubi.Z));
 }
 
 void AEnemigo::MoverDetras(float value)
@@ -74,21 +74,21 @@ void AEnemigo::MoverDetras(float value)
 void AEnemigo::MoverDerecha(float value)
 {
 	FVector Ubi = GetActorLocation();
-	SetActorLocation(FVector(Ubi.X+value, Ubi.Y, Ubi.Z));
+	SetActorLocation(FVector(Ubi.X + value, Ubi.Y, Ubi.Z));
 }
 
 void AEnemigo::MoverIzquierda(float value)
 {
 	FVector Ubi = GetActorLocation();
-	SetActorLocation(FVector(Ubi.X-value, Ubi.Y, Ubi.Z));
+	SetActorLocation(FVector(Ubi.X - value, Ubi.Y, Ubi.Z));
 }
 
 void AEnemigo::Volar()
 {
-	if (vuelo < 350) 
+	if (vuelo < 350)
 	{
 		FVector Ubi = GetActorLocation();
-		SetActorLocation(FVector(Ubi.X, Ubi.Y, Ubi.Z+1.0f));
+		SetActorLocation(FVector(Ubi.X, Ubi.Y, Ubi.Z + 1.0f));
 		vuelo++;
 	}
 }

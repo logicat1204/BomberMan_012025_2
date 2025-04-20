@@ -143,6 +143,21 @@
     <ClCompile Include="..\..\Source\BomberMan_012025\Private\MyBloqueLadrillo2Funcional.cpp">
       <Filter>Source\BomberMan_012025\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Private\PlayerControllerPrueba.cpp">
+      <Filter>Source\BomberMan_012025\Private</Filter>
+    </ClCompile>
+    <Filter Include="Source\BomberMan_012025\Private\PrimerParcial">
+      <UniqueIdentifier>{C6CF0153-500B-3907-A723-0E678E079D1F}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Private\PrimerParcial\PuertaPortal.cpp">
+      <Filter>Source\BomberMan_012025\Private\PrimerParcial</Filter>
+    </ClCompile>
+    <Filter Include="Source\BomberMan_012025\Private\Prototypes">
+      <UniqueIdentifier>{F6127730-756E-3703-B2AF-ED1E1A9477A1}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Private\Prototypes\PrototypeEnemigo1.cpp">
+      <Filter>Source\BomberMan_012025\Private\Prototypes</Filter>
+    </ClCompile>
     <Filter Include="Source\BomberMan_012025\Public">
       <UniqueIdentifier>{B8B96ACB-8471-3B17-99BC-3EEEEEEC8864}</UniqueIdentifier>
     </Filter>
@@ -229,6 +244,21 @@
     </ClCompile>
     <ClCompile Include="..\..\Source\BomberMan_012025\Public\MyBloqueLadrillo2Funcional.h">
       <Filter>Source\BomberMan_012025\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Public\PlayerControllerPrueba.h">
+      <Filter>Source\BomberMan_012025\Public</Filter>
+    </ClCompile>
+    <Filter Include="Source\BomberMan_012025\Public\PrimerParcial">
+      <UniqueIdentifier>{12A8D26F-3EA8-315F-AF3E-3046F300FCEE}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Public\PrimerParcial\PuertaPortal.h">
+      <Filter>Source\BomberMan_012025\Public\PrimerParcial</Filter>
+    </ClCompile>
+    <Filter Include="Source\BomberMan_012025\Public\Prototypes">
+      <UniqueIdentifier>{944D65D7-76D6-3B12-A514-98A99CF9ECC3}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\BomberMan_012025\Public\Prototypes\PrototypeEnemigo1.h">
+      <Filter>Source\BomberMan_012025\Public\Prototypes</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

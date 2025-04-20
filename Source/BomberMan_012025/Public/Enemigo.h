@@ -21,7 +21,7 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -34,5 +34,8 @@ public:
 	void MoverDerecha(float value);
 	void MoverIzquierda(float value);
 	void Volar();
+	void Eliminar();
 	int32 vuelo;
+
+
 };

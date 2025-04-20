@@ -13,6 +13,10 @@ UCLASS()
 class BOMBERMAN_012025_API ABloqueRocaFuncional : public ABloqueRoca
 {
 	GENERATED_BODY()
+	void BeginPlay();
+	void MoverAdelante(float value);
+	void MoverDetras(float value);
+
 	/*
 	void BeginPlay();
 	void mover_bloque();
@@ -23,4 +27,10 @@ class BOMBERMAN_012025_API ABloqueRocaFuncional : public ABloqueRoca
 	FTimerHandle ControladorTiempo;
 	int32 contadorTicks;
 	*/
+	void MoverDerecha(float value);
+	void MoverIzquierda(float value);
+	void MoverArriba(float value);
+	void MoverAbajo(float value);
+	void movimiento_aleatorio();
+	FTimerHandle MovimientoTimer;
 };
