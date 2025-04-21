@@ -35,6 +35,7 @@ void ABloque::BeginPlay()
 	Super::BeginPlay();
 	FVector ActorTamano = GetActorScale3D();
 	SetActorScale3D(FVector(ActorTamano.X,ActorTamano.Y,ActorTamano.Z*2.2));
+	
 }
 
 // Called every frame

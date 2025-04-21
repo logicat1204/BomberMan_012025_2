@@ -15,7 +15,7 @@ APuertaPortal::APuertaPortal()
 	PrimaryActorTick.bCanEverTick = true;
 
 	bPuedeTeletransportar = true;
-
+	//NO SE ESTA USANDO, ERA DE UN EXPERIMENTO ANTERIOR
 	// Primero creamos el componente raíz
 	BoxCollision = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxCollision"));
 	BoxCollision->SetBoxExtent(FVector(50.f, 50.f, 50.f));
@@ -34,8 +34,6 @@ APuertaPortal::APuertaPortal()
 		Mesh->SetRelativeLocation(FVector(0.0f, 0.0f, 0.0f));
 	}
 
-	// Evento de colisión
-	BoxCollision->OnComponentBeginOverlap.AddDynamic(this, &APuertaPortal::AlTocarJugador);
 }
 
 // Called when the game starts or when spawned
@@ -53,45 +51,9 @@ void APuertaPortal::Tick(float DeltaTime)
 }
 
 
-void APuertaPortal::AlTocarJugador(UPrimitiveComponent* OverlappedComp, AActor* OtherActor,
-	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+
+bool APuertaPortal::CanBeBaseForCharacter(APawn* APawn) const
 {
-	// Evitar teletransporte si no se puede
-	if (!bPuedeTeletransportar) return;
-
-	// Verificar que el actor que tocó la puerta es el jugador
-	if (OtherActor && OtherActor->IsA<ACharacter>())
-	{
-		// Asegúrate de que sea el jugador. Si usas ACharacter como base para enemigos,
-		// puedes agregar una verificación adicional para diferenciarlos (por ejemplo, comprobando
-		// si el actor es de tipo jugador).
-		ACharacter* Character = Cast<ACharacter>(OtherActor);
-		if (Character && Character != nullptr && Character->IsPlayerControlled())
-		{
-			// Código para teletransportar al jugador
-			ABomberMan_012025GameMode* GM = Cast<ABomberMan_012025GameMode>(UGameplayStatics::GetGameMode(GetWorld()));
-			if (GM && GM->PuertasPortal.Num() > 1)
-			{
-				AActor* nuevaPuerta = nullptr;
-
-				// Elegir una puerta distinta a esta
-				do {
-					int32 indice = FMath::RandRange(0, GM->PuertasPortal.Num() - 1);
-					nuevaPuerta = GM->PuertasPortal[indice];
-				} while (nuevaPuerta == this);
-
-				if (nuevaPuerta)
-				{
-					bPuedeTeletransportar = false; // evitar bucle
-					Character->SetActorLocation(nuevaPuerta->GetActorLocation());
-
-					// Muy importante: habilitar teletransporte después de un tiempo
-					FTimerHandle TimerHandle;
-					GetWorld()->GetTimerManager().SetTimer(TimerHandle, [this]() {
-						bPuedeTeletransportar = true;
-						}, 1.0f, false); // espera 1 segundo para habilitarlo otra vez
-				}
-			}
-		}
-	}
+	//GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Emerald, TEXT("Ey jugador! Me estas pisando!!!!"));
+	return true;
 }

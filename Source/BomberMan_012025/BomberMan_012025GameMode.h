@@ -2,6 +2,8 @@
 
 #pragma once
 
+//primer parcial v2
+#include "PrimerParcial/PuertaPortal.h"
 
 #include "EngineUtils.h"
 #include "GameFramework/PlayerStart.h"
@@ -11,7 +13,7 @@
 #include "GameFramework/Character.h"
 #include "GameFramework/PlayerController.h"
 
-#include "PrimerParcial/PuertaPortal.h"
+
 
 #include "Enemigo.h"
 #include "EnemigoTerrestre.h"
@@ -71,10 +73,20 @@ public:
 	UPROPERTY(BlueprintReadOnly)
 	TArray<APuertaPortal*> PuertasPortal;
 
-
-
-
-
+	//Primer Parcial - Puertas
+	APuertaPortal* PuertaActual;
+	TArray<APuertaPortal*> PuertasGuardadas;
+	APawn* MiJugador;
+	APuertaPortal* PuertaNueva;
+	int32 var_rand_puerta = 0;
+	bool bPuertaTransporta = true;
+	FTimerHandle PuertaTransporta;
+	void TiempoTP();
+	
+	//Primer Parcial - TP Jugador a un espacio en blanco
+	TArray<FVector> EspaciosEnBlanco;
+	void TPEspacioEnBlanco();
+	
 	//Niveles
 
 	TArray<TArray<int32>> Nivel1 =
@@ -151,28 +163,17 @@ public:
 	};
 
 	void GenerarNivel(FVector locacionGenerar,TArray<TArray<int32>> ArregloNivel);
-	void TransportarJugadorAlPlayerStart();
 
 	void CambiarBloque();
 
 
 	void BuscarPuertasPortal();
 
-
+	//pruebita XD
 	void GenerarParkour(FVector ubi_gen);
 
 
-	//examen de lab
-	void lab_01_muro();
-	void lab_02_10bloques();
-
-	void Eliminar();
-
 	AEnemigo* EnemigoActual;
-
-	FTimerHandle EliminarEnemigo;
-
-	int32 cont_enem;
 
 	int32 tot_puertas=0;
 };

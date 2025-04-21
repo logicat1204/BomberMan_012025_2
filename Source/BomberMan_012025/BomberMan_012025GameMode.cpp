@@ -14,19 +14,19 @@ ABomberMan_012025GameMode::ABomberMan_012025GameMode()
 	{
 		DefaultPawnClass = PlayerPawnBPClass.Class;
 	}
-
+	//Primer Parcial
+	//activar el tick del GameMode
+	PrimaryActorTick.bCanEverTick = true;
 }
 	
 void ABomberMan_012025GameMode::BeginPlay()
 {
 	Super::BeginPlay();
 	GenerarNivel(FVector(620.0f, -2330.0f, 0.0f), NivelBomberman50x50);
-
-	TransportarJugadorAlPlayerStart(); //  Aquí se mueve el jugador para corregir el tp al asignar 
+	//1
+	CambiarBloque();
+	//TransportarJugadorAlPlayerStart(); //  Aquí se mueve el jugador para corregir el tp al asignar 
 	//una nueva posicion al PlayerStart debido a que lo hice en la funcion GenerarNivel.
-
-	lab_01_muro();
-	lab_02_10bloques();
 
 	//GetWorldTimerManager().SetTimer(TemporizadorCambioBloque, this, &ABomberMan_012025GameMode::CambiarBloque, 15.0f, true);
 	/*
@@ -41,11 +41,48 @@ void ABomberMan_012025GameMode::BeginPlay()
 	BuscarPuertasPortal();
 
 	GenerarParkour(FVector(850.0f, 2750.0f, 0.0f));
+
+	//PrimerParcial
+	//Guardo al jugador como una variable de tipo pawn
+	MiJugador = UGameplayStatics::GetPlayerPawn(this, 0);
+	//Crear un cooldown con un timer para el TP de las puertas
+	GetWorldTimerManager().SetTimer(PuertaTransporta, this, &ABomberMan_012025GameMode::TiempoTP, 5.0f, true);
+	//Primer Parcial - 2
+	TPEspacioEnBlanco();
+
 }
 
 void ABomberMan_012025GameMode::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	//Primer Parcial
+	//Logica para detectar si el jugador esta en alguna de las puertas: Estoy guardando la distancia entre dos actores y las comparo
+	//Con cada puerta que esta guardada en el TArray
+	for (int i = 0; i < PuertasGuardadas.Num()-1; i++) {
+		PuertaActual = PuertasGuardadas[i];
+	if (PuertaActual && MiJugador)
+	{
+		FVector PosJugador = MiJugador->GetActorLocation();
+		FVector PosPuerta = PuertaActual->GetActorLocation();
+
+		float Distancia = FVector::Dist(PosJugador, PosPuerta);
+		if (Distancia < 100.0f && bPuertaTransporta==true) 
+		{
+			do {
+				var_rand_puerta = FMath::RandRange(0, PuertasGuardadas.Num() - 1);
+				PuertaNueva = PuertasGuardadas[var_rand_puerta];
+			} while (PuertaNueva == PuertaActual); // ¡buscamos una puerta diferente!
+			PuertaNueva = PuertasGuardadas[var_rand_puerta];
+			FVector TpPuerta = PuertaNueva->GetActorLocation();
+			if (PuertaNueva) {
+				MiJugador->SetActorLocation(TpPuerta);
+				GEngine->AddOnScreenDebugMessage(-1, 0.10f, FColor::Green, TEXT("El jugador ha usado un portal puerta."));
+				bPuertaTransporta = false;
+			}
+		}
+	}
+	}
+	
 
 }
 
@@ -61,7 +98,9 @@ void ABomberMan_012025GameMode::GenerarNivel(FVector locacionGenerar, TArray<TAr
 	int32 posicion_spawn=0;
 	for (int32 j = 0; j < ArregloNivel.Num(); j++) {
 		for (int32 k = 0; k < ArregloNivel[j].Num(); k++) {
-			if (ArregloNivel[j][k] == 0) limite_enemigos++;
+			if (ArregloNivel[j][k] == 0) {
+				limite_enemigos++;
+			}
 		}
 	}
 	
@@ -104,6 +143,8 @@ void ABomberMan_012025GameMode::GenerarNivel(FVector locacionGenerar, TArray<TAr
 			switch (ArregloNivel[j][k])
 			{
 			case 0:
+				//Guardamos las posiciones en blanco para poder invocar ahi a nuestro Bomberman
+				EspaciosEnBlanco.Add(FVector(locacionGenerar.X + (100.0f * j), locacionGenerar.Y + (100.0f * k), 0.0));
 				posicion_spawn++;
 				if (posicion_spawn == pos_startjugador)
 				{
@@ -204,26 +245,38 @@ void ABomberMan_012025GameMode::GenerarNivel(FVector locacionGenerar, TArray<TAr
 
 				}
 
-
+				//Colocar puertas
 				if (posicion_spawn == pos_p1) {
 					LugarAparicion.SetLocation(FVector(locacionGenerar.X + (100.0f * j), locacionGenerar.Y + (100.0f * k), 0.0));
-					GetWorld()->SpawnActor<APuertaPortal>(APuertaPortal::StaticClass(), LugarAparicion);
+					PuertaActual=GetWorld()->SpawnActor<APuertaPortal>(APuertaPortal::StaticClass(), LugarAparicion);
 					GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Turquoise, TEXT("Puerta colocada"));
+					if (PuertaActual) {
+						PuertasGuardadas.Add(PuertaActual);
+					}
 				}
 				if (posicion_spawn == pos_p2) {
 					LugarAparicion.SetLocation(FVector(locacionGenerar.X + (100.0f * j), locacionGenerar.Y + (100.0f * k), 0.0));
-					GetWorld()->SpawnActor<APuertaPortal>(APuertaPortal::StaticClass(), LugarAparicion);
+					PuertaActual = GetWorld()->SpawnActor<APuertaPortal>(APuertaPortal::StaticClass(), LugarAparicion);
 					GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Turquoise, TEXT("Puerta colocada"));
+					if (PuertaActual) {
+						PuertasGuardadas.Add(PuertaActual);
+					}
 				}
-				if (posicion_spawn == pos_en3) {
+				if (posicion_spawn == pos_p3) {
 					LugarAparicion.SetLocation(FVector(locacionGenerar.X + (100.0f * j), locacionGenerar.Y + (100.0f * k), 0.0));
-					GetWorld()->SpawnActor<APuertaPortal>(APuertaPortal::StaticClass(), LugarAparicion);
+					PuertaActual = GetWorld()->SpawnActor<APuertaPortal>(APuertaPortal::StaticClass(), LugarAparicion);
 					GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Turquoise, TEXT("Puerta colocada"));
+					if (PuertaActual) {
+						PuertasGuardadas.Add(PuertaActual);
+					}
 				}
-				if (posicion_spawn == pos_en4) {
+				if (posicion_spawn == pos_p4) {
 					LugarAparicion.SetLocation(FVector(locacionGenerar.X + (100.0f * j), locacionGenerar.Y + (100.0f * k), 0.0));
-					GetWorld()->SpawnActor<APuertaPortal>(APuertaPortal::StaticClass(), LugarAparicion);
+					PuertaActual = GetWorld()->SpawnActor<APuertaPortal>(APuertaPortal::StaticClass(), LugarAparicion);
 					GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Turquoise, TEXT("Puerta colocada"));
+					if (PuertaActual) {
+						PuertasGuardadas.Add(PuertaActual);
+					}
 				}
 
 
@@ -369,35 +422,6 @@ void ABomberMan_012025GameMode::GenerarNivel(FVector locacionGenerar, TArray<TAr
 
 
 
-//Funcionar para corregir la posicion Inicial del jugador al cambiar de lugar el PlayerStart
-void ABomberMan_012025GameMode::TransportarJugadorAlPlayerStart()
-{
-	UWorld* World = GetWorld();
-	if (!World) return;
-
-	// Buscar el primer PlayerStart (o puedes filtrar uno específico si quieres)
-	APlayerStart* MiPlayerStart = nullptr;
-
-	for (TActorIterator<APlayerStart> It(World); It; ++It)
-	{
-		MiPlayerStart = *It;
-		break; // Solo usamos el primero que encontremos
-	}
-
-	if (!MiPlayerStart) return;
-
-	// Obtener el PlayerController y su Pawn (el Character)
-	APlayerController* PC = UGameplayStatics::GetPlayerController(World, 0);
-	if (PC && PC->GetPawn())
-	{
-		// Mover al Character a la ubicación del PlayerStart
-		PC->GetPawn()->SetActorLocation(MiPlayerStart->GetActorLocation());
-		PC->GetPawn()->SetActorRotation(MiPlayerStart->GetActorRotation());
-
-		UE_LOG(LogTemp, Warning, TEXT("Jugador transportado al PlayerStart: %s"), *MiPlayerStart->GetActorLocation().ToString());
-	}
-}
-
 void ABomberMan_012025GameMode::CambiarBloque()
 {
 	if (aBloquesCambiables.Num() == 0) return;
@@ -469,85 +493,18 @@ void ABomberMan_012025GameMode::GenerarParkour(FVector ubi_gen)
 	}
 }
 
-
-FTransform muro_ubi;
-
-void ABomberMan_012025GameMode::lab_01_muro() {
-	for (int32 o = 0; o < 43; o++) {
-		muro_ubi.SetLocation(FVector(3130.0f,2460.0f - (100.0f * o),0.0f));
-		GetWorld()->SpawnActor<ABloqueMadera>(ABloqueMadera::StaticClass(), muro_ubi);
+void ABomberMan_012025GameMode::TiempoTP() 
+{
+	if(bPuertaTransporta==false){
+	GEngine->AddOnScreenDebugMessage(1, 3.0f, FColor::Black, TEXT("SE HA REACTIVADO EL TP"));
+	bPuertaTransporta = true;
 	}
 }
 
-FTransform bloques10;
-int32 contb=0;
-
-void ABomberMan_012025GameMode::lab_02_10bloques() {
-	FVector coordA = FVector(3030.0f,2450.0f,0.0f);
-	for (int32 q = 0; q <= 23; q++) {
-			contb++;
-			int32 rangoX = FMath::RandRange(1, 23);
-			int32 rangoY = FMath::RandRange(1, 20);
-			switch (contb) {
-			case 1:
-				bloques10.SetLocation(FVector(coordA.X - (100.0f * rangoX), coordA.Y - (100.0f * rangoY), coordA.Z));
-				GetWorld()->SpawnActor<ABloqueMadera>(ABloqueMadera::StaticClass(), bloques10);
-				break;
-			case 2:
-				bloques10.SetLocation(FVector(coordA.X - (100.0f * rangoX), coordA.Y - (100.0f * rangoY), coordA.Z));
-				GetWorld()->SpawnActor<ABloqueAgua>(ABloqueAgua::StaticClass(), bloques10);
-				break;
-			case 3:
-				bloques10.SetLocation(FVector(coordA.X - (100.0f * rangoX), coordA.Y - (100.0f * rangoY), coordA.Z));
-				GetWorld()->SpawnActor<ABloqueArena>(ABloqueArena::StaticClass(), bloques10);
-				break;
-			case 4:
-				bloques10.SetLocation(FVector(coordA.X - (100.0f * rangoX), coordA.Y - (100.0f * rangoY), coordA.Z));
-				GetWorld()->SpawnActor<ABloqueLadrillo2>(ABloqueLadrillo2::StaticClass(), bloques10);
-				break;
-			case 5:
-				bloques10.SetLocation(FVector(coordA.X - (100.0f * rangoX), coordA.Y - (100.0f * rangoY), coordA.Z));
-				GetWorld()->SpawnActor<ABloqueVidrio>(ABloqueVidrio::StaticClass(), bloques10);
-				break;
-			case 6:
-				bloques10.SetLocation(FVector(coordA.X - (100.0f * rangoX), coordA.Y - (100.0f * rangoY), coordA.Z));
-				GetWorld()->SpawnActor<ABloqueCesped>(ABloqueCesped::StaticClass(), bloques10);
-				break;
-			case 7:
-				bloques10.SetLocation(FVector(coordA.X - (100.0f * rangoX), coordA.Y - (100.0f * rangoY), coordA.Z));
-				GetWorld()->SpawnActor<ABloqueOro>(ABloqueOro::StaticClass(), bloques10);
-				break;
-			case 8:
-				bloques10.SetLocation(FVector(coordA.X - (100.0f * rangoX), coordA.Y - (100.0f * rangoY), coordA.Z));
-				GetWorld()->SpawnActor<ABloqueAcero2>(ABloqueAcero2::StaticClass(), bloques10);
-				break;
-			case 9:
-				bloques10.SetLocation(FVector(coordA.X - (100.0f * rangoX), coordA.Y - (100.0f * rangoY), coordA.Z));
-				GetWorld()->SpawnActor<ABloqueConcreto2>(ABloqueConcreto2::StaticClass(), bloques10);
-				break;
-			case 10:
-				bloques10.SetLocation(FVector(coordA.X - (100.0f * rangoX), coordA.Y - (100.0f * rangoY), coordA.Z));
-				GetWorld()->SpawnActor<ABloqueRoca>(ABloqueRoca::StaticClass(), bloques10);
-				break;
-			}
-
-		}
-	contb = 0;
-	}
-
-
-
-void ABomberMan_012025GameMode::Eliminar()
+void ABomberMan_012025GameMode::TPEspacioEnBlanco()
 {
-	int numeroEnemigos = aEnemigos.Num();
-	
-	if (aEnemigos.Num()>numeroEnemigos / 2) {
-
-		EnemigoActual = aEnemigos[numeroEnemigos-1]; 
-		if (EnemigoActual)
-		{
-			EnemigoActual->Destroy();
-			GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("Un enemigo ha sido eliminado."));
-		}
-	}
+	int32 pos_tp_inicio = FMath::RandRange(1, EspaciosEnBlanco.Num() - 1);
+	FVector TPInicio=EspaciosEnBlanco[pos_tp_inicio];
+	MiJugador->SetActorLocation(TPInicio);
+	GEngine->AddOnScreenDebugMessage(1,12.0f,FColor::Green,TEXT("Se ha transportado al jugador a un espaio aleatorio."));
 }
