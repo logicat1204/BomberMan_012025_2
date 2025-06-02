@@ -44,7 +44,33 @@ class ABomberMan_012025Character : public ACharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* LookAction;
 
+	UPROPERTY(EditDefaultsOnly, Category = "Input")
+	UInputAction* ColocarBombaAction;
 
+	UPROPERTY(EditAnywhere, Category = "Input")
+	UInputAction* ShieldAction;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Input")
+	UInputAction* DashAction;
+	int32 DashCooldown = 1;
+	int32 DefaultSpeed = 600.0f;
+	FTimerHandle SetDefaultSpeed;
+	FTimerHandle THRecargaDash;
+	float duracionDash=0.06f;
+
+public:
+	//Para mecanica colocar bomba
+	UPROPERTY(EditAnywhere, Category = "Bomb")
+	int32 CantBombas=1;
+	FTimerHandle RecargaBomba;
+
+	UPROPERTY(EditAnywhere, Category = "Shield")
+	AActor* Shield;
+	int32 ShieldItems=1;
+	FTimerHandle THReloadShield;
+	FTimerHandle THShieldEffect;
+	float ShieldTime=0.5f;
+	float ShieldCooldown=5.0f;
 
 public:
 	ABomberMan_012025Character();
@@ -62,6 +88,8 @@ protected:
 			
 
 protected:
+	//agregado para la bomba
+	void BeginPlay();
 
 	virtual void NotifyControllerChanged() override;
 
@@ -73,5 +101,21 @@ public:
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+
+
+
+protected:
+	// Función que manejará la acción de colocar la bomba
+	void ColocarBomba();
+	//Funcion que recarga el uso de bombas
+	void RecargarBomba();
+	void RecargarDash();
+	//Funcion para incrementar el movimiento del personaje por un momento(Dash)
+	void DashPJ();
+	void set_defaultSpeed();
+
+	void ShieldPJ();
+	void EndShield();
+	void ReloadShield();
 };
 
